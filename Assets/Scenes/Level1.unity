@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 39663990}
   - component: {fileID: 39663989}
   - component: {fileID: 39663988}
-  - component: {fileID: 39663994}
   m_Layer: 0
   m_Name: PlayerBall
   m_TagString: Untagged
@@ -152,9 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 39663987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb0c6d2cddd5ce43873f2434066d49b, type: 3}
+  m_Script: {fileID: 11500000, guid: dad5cbdf617a6234f8d47555fbd36f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementForce: 53
+  jumpForce: 17
+  movementMaxSpeed: 5
 --- !u!54 &39663989
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -245,21 +247,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &39663994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39663987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd91777336a4ce44bbfa934d84134c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementForce: 53
-  movementMaxSpeed: 5
-  jumpForce: 17
 --- !u!1 &266280538
 GameObject:
   m_ObjectHideFlags: 0
