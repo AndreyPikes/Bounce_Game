@@ -45,18 +45,13 @@ public class PlayerFacade : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
 #if UNITY_EDITOR
     [ContextMenu("Reset values")]
     public void ResetValues()
     {
-        movementForce = 2;
+        movementForce = 53;
+        jumpForce = 17;
+        movementMaxSpeed = 5;
     }
 #endif
 }
