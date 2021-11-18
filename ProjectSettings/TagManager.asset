@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -14,11 +16,11 @@ TagManager:
   - 
   - 
   - Player
-  - Enemy
+  - Torns
   - Bomb
   - Finish
   - PostProcess
-  - 
+  - Environment
   - 
   - 
   - 
