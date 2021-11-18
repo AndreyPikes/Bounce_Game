@@ -6,33 +6,42 @@ using UnityEngine.SceneManagement;
 
 public class GameMenuUI : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu; //панель меню паузы
+    [SerializeField] Canvas pauseMenu; //панель меню паузы
+    [SerializeField] Canvas playerMobileControllerInput; //панель меню паузы
     private bool pauseMenuIsActive = false;
 
     private void Start()
     {
         Time.timeScale = 1; //на случай, если перезапускаем сцену из главного меню после паузы
+
+#if UNITY_ANDROID
+        playerMobileControllerInput.enabled = true;        
+#endif
     }
 
 
-
-    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuIsActive)
         {
             pauseMenuIsActive = true;
-            pauseMenu.SetActive(true);
+            pauseMenu.enabled = true;
             Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuIsActive) ResumeButton();
+
+#if UNITY_ANDROID
+        
+
+#endif
+
     }
     /// <summary>
     /// Метод для кнопки "Продолжить" возвращает в игру
     /// </summary>
     public void ResumeButton()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu.enabled = false;
         Time.timeScale = 1;
         pauseMenuIsActive = false;
     }

@@ -38,18 +38,5 @@ public class CreateLevelButton : MonoBehaviour
             SceneManager.LoadScene(sceneIndex);
         });
     }
-    /// <summary>
-    /// Метод для кнопки выхода
-    /// </summary>
-    public void ExitGameButton()
-    {
-        Application.Quit();
-    }
-
-    public void LinkToInstyaVR()
-    {
-        Application.OpenURL("https://instavr.ru/");
-    }
-
-
+    
 }
