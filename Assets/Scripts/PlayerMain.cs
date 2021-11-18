@@ -6,18 +6,21 @@ using Bounce.Inputs;
 
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerFacade : MonoBehaviour
+public class PlayerMain : MonoBehaviour, IExploding, IDamagable
 {
+    
     private Rigidbody playerRigidbody;
     [SerializeField, Range(0, 100)] private float movementForce;
     [SerializeField, Range(0, 200)] private float jumpForce;
     [SerializeField, Range(0, 100)] private float movementMaxSpeed;
-    
+
+    [SerializeField] private InputUIButtons inputUI;
     private InputKeyboard inputKeyboard;
     private PlayerMovement playerMovement;
 
     private Vector3 move;
     private bool jump;
+    
 
 
     private void Awake()
@@ -33,7 +36,12 @@ public class PlayerFacade : MonoBehaviour
 
     void Update()
     {
-        (jump, move) = inputKeyboard.GetInput();
+#if UNITY_ANDROID
+        (jump, move) = inputUI.GetInput();
+#endif
+#if UNITY_STANDALONE_WIN
+        (jump, move) = inputKeyboard.GetInput();      
+#endif
     }
 
     private void FixedUpdate()
@@ -42,6 +50,19 @@ public class PlayerFacade : MonoBehaviour
         playerMovement.Move(move);
         playerMovement.SpeedLimitter();
     }
+
+    public void Explode()
+    {
+        Debug.Log("Погиб от бомбы");
+    }
+
+    public void Damage()
+    {
+        Debug.Log("Погиб от шипов");
+    }
+
+    
+
 
 
 
@@ -52,6 +73,8 @@ public class PlayerFacade : MonoBehaviour
         movementForce = 53;
         jumpForce = 17;
         movementMaxSpeed = 5;
-    }
+    }  
+
+
 #endif
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameMenuUI : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
-    [SerializeField] Canvas pauseMenu; //панель меню паузы
-    [SerializeField] Canvas playerMobileControllerInput; //панель меню паузы
+    [SerializeField] private Canvas pauseMenu; //панель меню паузы
+    [SerializeField] private Canvas playerMobileControllerInput; //панель меню паузы
     private bool pauseMenuIsActive = false;
 
     private void Start()
@@ -19,23 +19,23 @@ public class GameMenuUI : MonoBehaviour
 #endif
     }
 
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuIsActive)
         {
-            pauseMenuIsActive = true;
-            pauseMenu.enabled = true;
-            Time.timeScale = 0;
+            PauseButton();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuIsActive) ResumeButton();
-
-#if UNITY_ANDROID
-        
-
-#endif
-
     }
+
+    
+    public void PauseButton()
+    {
+        pauseMenuIsActive = true;
+        pauseMenu.enabled = true;
+        Time.timeScale = 0;
+    }
+
     /// <summary>
     /// Метод для кнопки "Продолжить" возвращает в игру
     /// </summary>
@@ -59,5 +59,4 @@ public class GameMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
 }
