@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraFolowing : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;    //найти через скрипт
     [SerializeField] private float cameraSpeed;
@@ -17,5 +17,10 @@ public class CameraMovement : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position, playerTransform.position + offset, Time.deltaTime * cameraSpeed);
         //transform.position = playerTransform.position + offset;
+    }
+
+    public void ShakeCamera()
+    {
+
     }
 }

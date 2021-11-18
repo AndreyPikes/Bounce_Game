@@ -46,5 +46,10 @@ public class CreateLevelButton : MonoBehaviour
         Application.Quit();
     }
 
+    public void LinkToInstyaVR()
+    {
+        Application.OpenURL("https://instavr.ru/");
+    }
+
 
 }
