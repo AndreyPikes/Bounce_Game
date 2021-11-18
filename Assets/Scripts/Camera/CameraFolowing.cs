@@ -6,6 +6,7 @@ public class CameraFolowing : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;    //найти через скрипт
     [SerializeField] private float cameraSpeed;
+    [SerializeField] private float cameraMaxHeight;
     private Vector3 offset;
 
     void Start()
@@ -15,7 +16,10 @@ public class CameraFolowing : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, playerTransform.position + offset, Time.deltaTime * cameraSpeed);
+        Vector3 target = playerTransform.position + offset;
+        float delta = cameraMaxHeight - target.y;
+        if (delta < 0) target = new Vector3(target.x, cameraMaxHeight, target.z);
+        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * cameraSpeed);
         //transform.position = playerTransform.position + offset;
     }
 
