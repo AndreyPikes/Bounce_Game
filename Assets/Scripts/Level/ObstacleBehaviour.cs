@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Bounce.Inputs;
+using UnityEngine.UI;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
@@ -19,9 +20,19 @@ public class ObstacleBehaviour : MonoBehaviour
     {
         inputKeyboard = new InputKeyboard();
 
-        if (canvasKeyDoor == null) isSelfDamaged = true;        
-        else openButton = canvasKeyDoor.GetComponentInChildren<EventHandler>();        
+        if (canvasKeyDoor == null) isSelfDamaged = true;
+        else
+        {
+            openButton = canvasKeyDoor.GetComponentInChildren<EventHandler>();
+            Text message = canvasKeyDoor.GetComponentInChildren<Text>();
 
+#if UNITY_ANDROID
+        message.text =  "Press to open";
+#endif
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
+            message.text = "Press \"E\" to open";
+#endif
+        }
     }
 
     private void OnTriggerEnter(Collider other)

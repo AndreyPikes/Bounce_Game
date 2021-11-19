@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IExploding, IDamagable
     private Vector3 move;
     private bool jump;
 
-    public bool dead;
+    private bool dead;
 
     private void Awake()
     {
@@ -44,13 +44,13 @@ public class Player : MonoBehaviour, IExploding, IDamagable
 #if UNITY_ANDROID
         (jump, move) = inputFromUI.GetInput();
 #endif
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_WEBGL
         (jump, move) = inputKeyboard.GetInputMovement(); 
 #endif
         }
     }
 
-        private void FixedUpdate()
+    private void FixedUpdate()
     {
         if (jump) playerMovement.Jump();
         playerMovement.Move(move);
@@ -59,12 +59,21 @@ public class Player : MonoBehaviour, IExploding, IDamagable
 
     public void Explode()
     {
-        if (!dead) Death?.Invoke("Died of an explosion!");
+        if (!dead)
+        {
+            dead = true;
+            Death?.Invoke("Died of an explosion!");
+        }
     }
+            
 
     public void Damage()
     {
-        if (!dead) Death?.Invoke("Died of thorns!");
+        if (!dead)
+        {
+            dead = true;
+            Death?.Invoke("Died of thorns!");
+        }
     }
 
 
