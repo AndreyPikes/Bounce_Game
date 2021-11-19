@@ -39,22 +39,22 @@ public class Player : MonoBehaviour, IExploding, IDamagable
 
     void Update()
     { 
-        if (!dead)
-        {
 #if UNITY_ANDROID
         (jump, move) = inputFromUI.GetInput();
 #endif
 #if UNITY_STANDALONE_WIN || UNITY_WEBGL
         (jump, move) = inputKeyboard.GetInputMovement(); 
 #endif
-        }
     }
 
     private void FixedUpdate()
     {
-        if (jump) playerMovement.Jump();
-        playerMovement.Move(move);
-        playerMovement.SpeedLimitter();
+        if (!dead)
+        {
+            if (jump) playerMovement.Jump();
+            playerMovement.Move(move);
+            playerMovement.SpeedLimitter();
+        }
     }
 
     public void Explode()
