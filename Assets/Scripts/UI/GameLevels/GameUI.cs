@@ -3,37 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Bounce.Inputs;
+using System;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private Canvas pauseMenu; //панель меню паузы
-    [SerializeField] private Canvas playerMobileControllerInput; //панель меню паузы
+    [SerializeField] private Player player;
+    [SerializeField] private Canvas pauseMenuCanvas; //панель меню паузы
+    [SerializeField] private Canvas playerMobileControllerInputCanvas; //панель управления игроком
+    [SerializeField] private Canvas gameOverCanvas;
+
     private bool pauseMenuIsActive = false;
+    private InputKeyboard inputKeyboard;
+    private bool playerDead;
 
     private void Start()
     {
         Time.timeScale = 1; //на случай, если перезапускаем сцену из главного меню после паузы
+        inputKeyboard = new InputKeyboard();
+        player.Death += PlayerDeathCanvasShow;
+
 
 #if UNITY_ANDROID
-        playerMobileControllerInput.enabled = true;        
+        playerMobileControllerInputCanvas.enabled = true;        
 #endif
+    }
+
+    private void PlayerDeathCanvasShow(string notificationText)
+    {
+        playerDead = true;
+        gameOverCanvas.enabled = true;
+        Text message = gameOverCanvas.gameObject.GetComponentInChildren<Text>();
+        message.text = notificationText;
+
+        playerMobileControllerInputCanvas.enabled = false;
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuIsActive)
+        if (!playerDead && inputKeyboard.GetInputEscape())
         {
             PauseButton();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuIsActive) ResumeButton();
     }
 
     
     public void PauseButton()
     {
-        pauseMenuIsActive = true;
-        pauseMenu.enabled = true;
-        Time.timeScale = 0;
+        if (!pauseMenuIsActive)
+        {
+            pauseMenuIsActive = true;
+            pauseMenuCanvas.enabled = true;
+            Time.timeScale = 0;
+        }
+        else ResumeButton();
     }
 
     /// <summary>
@@ -41,7 +65,7 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void ResumeButton()
     {
-        pauseMenu.enabled = false;
+        pauseMenuCanvas.enabled = false;
         Time.timeScale = 1;
         pauseMenuIsActive = false;
     }

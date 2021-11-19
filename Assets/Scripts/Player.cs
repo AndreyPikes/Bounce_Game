@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bounce.Movement;
 using Bounce.Inputs;
-
+using UnityEngine.SceneManagement;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMain : MonoBehaviour, IExploding, IDamagable
+public class Player : MonoBehaviour, IExploding, IDamagable
 {
+    public event Action<string> Death;
     
-    private Rigidbody playerRigidbody;
     [SerializeField, Range(0, 100)] private float movementForce;
     [SerializeField, Range(0, 200)] private float jumpForce;
     [SerializeField, Range(0, 100)] private float movementMaxSpeed;
 
-    [SerializeField] private InputUIButtons inputUI;
+    [SerializeField] private InputUIButtons inputFromUI;
+
+    private Rigidbody playerRigidbody;
     private InputKeyboard inputKeyboard;
     private PlayerMovement playerMovement;
 
     private Vector3 move;
     private bool jump;
-    
 
+    public bool dead;
 
     private void Awake()
     {
@@ -35,16 +38,19 @@ public class PlayerMain : MonoBehaviour, IExploding, IDamagable
     }
 
     void Update()
-    {
+    { 
+        if (!dead)
+        {
 #if UNITY_ANDROID
-        (jump, move) = inputUI.GetInput();
+        (jump, move) = inputFromUI.GetInput();
 #endif
 #if UNITY_STANDALONE_WIN
-        (jump, move) = inputKeyboard.GetInput();      
+        (jump, move) = inputKeyboard.GetInputMovement(); 
 #endif
+        }
     }
 
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
         if (jump) playerMovement.Jump();
         playerMovement.Move(move);
@@ -53,16 +59,13 @@ public class PlayerMain : MonoBehaviour, IExploding, IDamagable
 
     public void Explode()
     {
-        Debug.Log("Погиб от бомбы");
+        if (!dead) Death?.Invoke("Died of an explosion!");
     }
 
     public void Damage()
     {
-        Debug.Log("Погиб от шипов");
+        if (!dead) Death?.Invoke("Died of thorns!");
     }
-
-    
-
 
 
 

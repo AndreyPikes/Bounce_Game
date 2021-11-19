@@ -6,7 +6,7 @@ namespace Bounce.Inputs
 {    
     public class InputKeyboard
     {        
-        public (bool, Vector3) GetInput()
+        public (bool, Vector3) GetInputMovement()
         {
             bool jumping = false;
             Vector3 movementHorizontal;
@@ -19,6 +19,16 @@ namespace Bounce.Inputs
             movementHorizontal = new Vector3(-horizontalInput, 0, 0).normalized; //единичные            
 
             return (jumping, movementHorizontal);
+        }
+
+        public bool GetInputEscape()
+        {
+            return Input.GetKeyDown(KeyCode.Escape);
+        }
+
+        public bool GetInputOpen()
+        {
+            return Input.GetKeyDown(KeyCode.E);
         }
     }
 }
