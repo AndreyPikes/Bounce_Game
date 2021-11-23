@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 using Bounce.Inputs;
 using System;
 
-public class GameUI : MonoBehaviour
+public class GameMenuUI : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerPresenter playerPresenter;
     [SerializeField] private Canvas pauseMenuCanvas; //панель меню паузы
     [SerializeField] private Canvas playerMobileControllerInputCanvas; //панель управления игроком
     [SerializeField] private Canvas gameOverCanvas;
@@ -21,7 +21,7 @@ public class GameUI : MonoBehaviour
     {
         Time.timeScale = 1; //на случай, если перезапускаем сцену из главного меню после паузы
         inputKeyboard = new InputKeyboard();
-        player.Death += PlayerDeathCanvasShow;
+        playerPresenter.playerModel.Death += PlayerDeathCanvasShow;
 
 
 #if UNITY_ANDROID

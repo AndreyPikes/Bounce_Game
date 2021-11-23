@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputUIButtons : MonoBehaviour
+public class PlayerInputUI : MonoBehaviour
 {
     [SerializeField] private EventHandler  LEFT;
     [SerializeField] private EventHandler  RIGHT;

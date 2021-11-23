@@ -1,18 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Bounce.Movement
 {
     
-    public class PlayerMovement
+    public class PlayerModel
     {
+        public event Action<string> Death;
+
+        private bool dead = false;
+
         private Rigidbody playerRigidbody;
         private float movementForce;
         private float jumpForce;
         private float movementMaxSpeed;        
 
-        public PlayerMovement(Rigidbody rigidbody, float movementForce, float jumpForce, float speedLimit)
+        public PlayerModel(Rigidbody rigidbody, float movementForce, float jumpForce, float speedLimit)
         {
             this.playerRigidbody = rigidbody;
             this.movementForce = movementForce;
@@ -32,16 +37,30 @@ namespace Bounce.Movement
 
         public void Move(Vector3 movement)
         {
-            playerRigidbody.AddForce(movement * movementForce);
+            if (!dead)
+            {
+                playerRigidbody.AddForce(movement * movementForce);
+            }
+            
         }
 
         public void Jump()
         {
-            if ((playerRigidbody.velocity.y < 0.01f)
-                && (playerRigidbody.velocity.y > -0.01f))
+            if (!dead)
             {
-                playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+                if ((playerRigidbody.velocity.y < 0.01f)
+                && (playerRigidbody.velocity.y > -0.01f))
+                {
+                    playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+                }
             }
+            
+        }
+
+        public void Kill(string message)
+        {
+            dead = true;
+            Death?.Invoke(message);
         }
     }
 }
