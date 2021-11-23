@@ -6,7 +6,7 @@ public class CameraFolowing : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;    //найти через скрипт
     [SerializeField] private float cameraSpeed;
-    [SerializeField] private float cameraMaxHeight;
+    public float cameraMaxHeight;
     private Vector3 offset;
 
     void Start()

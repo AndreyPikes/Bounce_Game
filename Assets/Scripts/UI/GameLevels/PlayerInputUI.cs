@@ -8,9 +8,10 @@ public class PlayerInputUI : MonoBehaviour
     [SerializeField] private EventHandler  RIGHT;
     [SerializeField] private EventHandler  JUMP;
 
+    private bool jumping;
+
     public (bool, Vector3) GetInput()
-    {
-        bool jumping = false;
+    {        
         Vector3 movementHorizontal;
         
         bool jump = JUMP.isDown;
@@ -21,5 +22,9 @@ public class PlayerInputUI : MonoBehaviour
         else movementHorizontal = Vector3.zero;
 
         return (jumping, movementHorizontal);
+    }
+    public void SetJumpingFlagFalse()
+    {
+        jumping = false;
     }
 }

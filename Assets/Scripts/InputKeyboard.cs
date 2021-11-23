@@ -5,14 +5,15 @@ using UnityEngine;
 namespace Bounce.Inputs
 {    
     public class InputKeyboard
-    {        
+    {
+        private bool jumping;
+
         public (bool, Vector3) GetInputMovement()
-        {
-            bool jumping = false;
+        {            
             Vector3 movementHorizontal;
 
             float vertical = Input.GetAxis("Vertical");
-            bool jump = Input.GetButtonDown("Jump");
+            bool jump = Input.GetButton("Jump");
             jumping |= (jump || vertical > 0); //логическое или оставляет левую часть true до конца Update, даже если нажатие закончилось!
 
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -29,6 +30,11 @@ namespace Bounce.Inputs
         public bool GetInputOpen()
         {
             return Input.GetKeyDown(KeyCode.E);
+        }
+
+        public void SetJumpingFlagFalse()
+        {
+            jumping = false;
         }
     }
 }

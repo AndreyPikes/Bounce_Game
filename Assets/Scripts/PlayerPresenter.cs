@@ -32,7 +32,7 @@ public class PlayerPresenter : MonoBehaviour, IExploding, IDamagable
     void Start()
     {
         inputKeyboard = new InputKeyboard();
-        playerModel = new PlayerModel(playerRigidbody, movementForce, jumpForce, movementMaxSpeed);
+        playerModel = new PlayerModel(transform, playerRigidbody, movementForce, jumpForce, movementMaxSpeed);
     }
 
     void Update()
@@ -48,9 +48,11 @@ public class PlayerPresenter : MonoBehaviour, IExploding, IDamagable
     private void FixedUpdate()
     {
         
-         if (jump) playerModel.Jump();
-         playerModel.Move(move);
-         playerModel.SpeedLimitter();
+        if (jump) playerModel.Jump();
+        inputKeyboard.SetJumpingFlagFalse();//костылек для улучшения отзывчивости
+        playerInputUI.SetJumpingFlagFalse();        
+        playerModel.Move(move);
+        playerModel.SpeedLimitter();
         
     }
 

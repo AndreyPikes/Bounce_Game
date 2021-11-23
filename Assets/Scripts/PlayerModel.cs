@@ -12,13 +12,15 @@ namespace Bounce.Movement
 
         private bool dead = false;
 
+        private Transform transform;
         private Rigidbody playerRigidbody;
         private float movementForce;
         private float jumpForce;
         private float movementMaxSpeed;        
 
-        public PlayerModel(Rigidbody rigidbody, float movementForce, float jumpForce, float speedLimit)
+        public PlayerModel(Transform transform, Rigidbody rigidbody, float movementForce, float jumpForce, float speedLimit)
         {
+            this.transform = transform;
             this.playerRigidbody = rigidbody;
             this.movementForce = movementForce;
             this.jumpForce = jumpForce;
@@ -47,10 +49,11 @@ namespace Bounce.Movement
         public void Jump()
         {
             if (!dead)
-            {
-                if ((playerRigidbody.velocity.y < 0.01f)
-                && (playerRigidbody.velocity.y > -0.01f))
-                {
+            {   
+                if (CheckIfGrounded())
+                //if ((playerRigidbody.velocity.y < 0.01f)
+                //&& (playerRigidbody.velocity.y > -0.01f))
+                {                    
                     playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 }
             }
@@ -61,6 +64,14 @@ namespace Bounce.Movement
         {
             dead = true;
             Death?.Invoke(message);
+        }
+
+        private bool CheckIfGrounded()
+        {
+            Vector3 rayStart = transform.position;            
+            float radius = transform.localScale.y / 2 - 0.01f;
+            float rayLenghth = 0.02f;
+            return Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);
         }
     }
 }
