@@ -27,10 +27,6 @@ public class PlayerPresenter : MonoBehaviour, IExploding, IDamagable
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Start()
-    {
         inputKeyboard = new InputKeyboard();
         playerModel = new PlayerModel(transform, playerRigidbody, movementForce, jumpForce, movementMaxSpeed);
     }

@@ -12,6 +12,7 @@ public class GameMenuUI : MonoBehaviour
     [SerializeField] private Canvas pauseMenuCanvas; //панель меню паузы
     [SerializeField] private Canvas playerMobileControllerInputCanvas; //панель управления игроком
     [SerializeField] private Canvas gameOverCanvas;
+    [SerializeField] private float deathCanvasDelay;
 
     private bool pauseMenuIsActive = false;
     private InputKeyboard inputKeyboard;
@@ -21,7 +22,7 @@ public class GameMenuUI : MonoBehaviour
     {
         Time.timeScale = 1; //на случай, если перезапускаем сцену из главного меню после паузы
         inputKeyboard = new InputKeyboard();
-        playerPresenter.playerModel.Death += PlayerDeathCanvasShow;
+        playerPresenter.playerModel.Death += PlayerDeathCoroutine;
 
 
 #if UNITY_ANDROID
@@ -29,15 +30,19 @@ public class GameMenuUI : MonoBehaviour
 #endif
     }
 
-    private void PlayerDeathCanvasShow(string notificationText)
+    private void PlayerDeathCoroutine(string notificationText)
+    {
+        StartCoroutine(PlayerDeathCanvasShow(notificationText));
+    }
+
+    private IEnumerator PlayerDeathCanvasShow(string notificationText)
     {
         playerDead = true;
+        playerMobileControllerInputCanvas.enabled = false;
+        yield return new WaitForSeconds(deathCanvasDelay);
         gameOverCanvas.enabled = true;
         Text message = gameOverCanvas.gameObject.GetComponentInChildren<Text>();
         message.text = notificationText;
-
-        playerMobileControllerInputCanvas.enabled = false;
-
     }
 
     private void Update()

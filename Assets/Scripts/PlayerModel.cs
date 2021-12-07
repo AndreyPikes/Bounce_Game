@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Bounce.Movement
-{
-    
+{    
     public class PlayerModel
     {
         public event Action<string> Death;
@@ -62,8 +61,12 @@ namespace Bounce.Movement
 
         public void Kill(string message)
         {
-            dead = true;
-            Death?.Invoke(message);
+            if (!dead)
+            {
+                dead = true;
+                Death?.Invoke(message);
+            }
+            
         }
 
         private bool CheckIfGrounded()

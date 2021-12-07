@@ -31,7 +31,7 @@ public class Torns : MonoBehaviour, IExploding
             {
                 playerFolowing = StartCoroutine(FolowPlayer(other.transform));
             }
-            if (other.CompareTag("Environment"))
+            else if (other.CompareTag("Environment"))
             {
                 if (playerFolowing != null) StopCoroutine(playerFolowing);
             }
