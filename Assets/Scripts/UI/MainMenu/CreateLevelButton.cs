@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class CreateLevelButton : MonoBehaviour
 {
     [SerializeField] private Button sampleButton;
+    [SerializeField] private Transform parentTransform;
+    [SerializeField] private Fader fader;
     private int sceneCount;
     
 
@@ -29,14 +31,20 @@ public class CreateLevelButton : MonoBehaviour
     /// <param name="sceneIndex">индекс сцены</param>
     private void CreateNewButtonLinkToScene(int sceneIndex)
     {
-        Button sceneLinkButton = Instantiate(sampleButton, transform); //создаем согласно кнопке образцу в этой же координате, поскольку точное расположение будет обеспечено Grid Layout
+        Button sceneLinkButton = Instantiate(sampleButton, parentTransform); //создаем согласно кнопке образцу в этой же координате, поскольку точное расположение будет обеспечено Grid Layout
         Text sceneLinkButtonText = sceneLinkButton.GetComponentInChildren<Text>();
         sceneLinkButtonText.text = $"Level {sceneIndex}";
 
         sceneLinkButton.onClick.AddListener(() => //добавляем событие по срабатыванию новой кнопки
         {
-            SceneManager.LoadScene(sceneIndex);
+            StartCoroutine(LoadScene(sceneIndex, 2f));
         });
     }
     
+    IEnumerator LoadScene(int sceneIndex, float delay)
+    {
+        fader.FadeBlack(delay);
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneIndex);
+    }
 }

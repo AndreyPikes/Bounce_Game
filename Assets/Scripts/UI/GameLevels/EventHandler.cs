@@ -17,6 +17,4 @@ public class EventHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         isDown = false;
     }
-
-    
 }

@@ -23,6 +23,9 @@ public class PlayerInputUI : MonoBehaviour
 
         return (jumping, movementHorizontal);
     }
+    /// <summary>
+    /// костыль
+    /// </summary>
     public void SetJumpingFlagFalse()
     {
         jumping = false;

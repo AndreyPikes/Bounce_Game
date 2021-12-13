@@ -32,6 +32,9 @@ namespace Bounce.Inputs
             return Input.GetKeyDown(KeyCode.E);
         }
 
+        /// <summary>
+        /// костыль
+        /// </summary>
         public void SetJumpingFlagFalse()
         {
             jumping = false;
