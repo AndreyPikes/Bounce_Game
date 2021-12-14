@@ -1288,6 +1288,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2737421910325066545, guid: 8055c7cfe44b45b49a171231d9dab3ff,
+        type: 3}
+      propertyPath: fadeToTransparentDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4107306781748980008, guid: 8055c7cfe44b45b49a171231d9dab3ff,
         type: 3}
       propertyPath: m_Color.a

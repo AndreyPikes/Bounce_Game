@@ -72,9 +72,11 @@ namespace Bounce.Movement
         private bool CheckIfGrounded()
         {
             Vector3 rayStart = transform.position;            
-            float radius = transform.localScale.y / 2 - 0.01f;
-            float rayLenghth = 0.02f;
-            return Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);
+            float radius = transform.localScale.y / 2 - 0.05f;
+            float rayLenghth = 0.055f;
+            bool b = Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);
+            if (b) Debug.Log(hitInfo.collider.name);
+            return b;
         }
     }
 }
