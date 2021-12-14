@@ -5,45 +5,56 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
+    [SerializeField] private float fadeToTransparentDelay;
     private Image image;
 
     
     
-    private void Start()
+    private void OnEnable()
     {
+        Debug.Log("OnEnable");
         image = GetComponent<Image>();
-        FadeTransparent(1f);
+        FadeTransparent(fadeToTransparentDelay);        
     }
 
     public void FadeBlack(float delay)
     {
-        StartCoroutine(FadeBlackCoroutine(delay));
+        StartCoroutine(FadeToBlackCoroutine(delay));
     }
 
     public void FadeTransparent(float delay)
     {
-        image.color = Color.black;
-        StartCoroutine(FadeTransparentCoroutine(delay));
+        image.color = Color.black;        
+        StartCoroutine(FadeToTransparentCoroutine(delay));
     }
 
-    IEnumerator FadeBlackCoroutine(float delay)
+    IEnumerator FadeToBlackCoroutine(float delay)
     {
-        while(image.color.a < 1)
+        
+        while (image.color.a < 1f)
         {
-            Debug.Log(image.color.a);
-            image.color = Color.Lerp(image.color, new Color(0, 0, 0, 1),  (float) 1 / 20);
-            yield return new WaitForSeconds(delay / 20);
-        }        
+            Debug.Log($"FadeToBlackCoroutine {image.color.a} while < 1");
+            float alpha = Mathf.Lerp(image.color.a, 2f, 0.05f);
+            image.color = new Color(0, 0, 0, alpha);
+            yield return new WaitForSecondsRealtime(delay / 20);
+        }
         
     }
-    IEnumerator FadeTransparentCoroutine(float delay)
+    IEnumerator FadeToTransparentCoroutine(float delay)
     {
-        while (image.color.a > 0)
+        
+        while (image.color.a > 0f)
         {
-            Debug.Log(image.color.a);
-            image.color = Color.Lerp(image.color, new Color(0, 0, 0, 0), (float)1 / 20);
-            yield return new WaitForSeconds(delay / 20);
+            Debug.Log($"FadeToTransparentCoroutine {image.color.a} while > 0");
+            float alpha = Mathf.Lerp(image.color.a, -1f, 0.05f);
+            image.color = new Color(0, 0, 0, alpha);
+            yield return new WaitForSecondsRealtime(delay / 20);
         }
+        
+    }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }

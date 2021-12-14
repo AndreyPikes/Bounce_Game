@@ -22,7 +22,7 @@ public class GameMenuUI : MonoBehaviour
     {
         Time.timeScale = 1; //на случай, если перезапускаем сцену из главного меню после паузы
         inputKeyboard = new InputKeyboard();
-        playerPresenter.playerModel.Death += PlayerDeathCoroutine;
+        playerPresenter.playerModel.Death += PlayerDeathCoroutine;        
 
 
 #if UNITY_ANDROID

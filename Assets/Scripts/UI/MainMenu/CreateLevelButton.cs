@@ -10,8 +10,7 @@ public class CreateLevelButton : MonoBehaviour
     [SerializeField] private Button sampleButton;
     [SerializeField] private Transform parentTransform;
     [SerializeField] private Fader fader;
-    private int sceneCount;
-    
+    private int sceneCount;  
 
 
 
@@ -22,7 +21,7 @@ public class CreateLevelButton : MonoBehaviour
         for (int i = 1; i < sceneCount; i++) //нулевую сцену игнорируем, поскольку это меню
         {
             CreateNewButtonLinkToScene(i);      //запускаем метод создания кнопки, соответсвующей сцене
-         }
+        }
     }
 
     /// <summary>
@@ -37,14 +36,19 @@ public class CreateLevelButton : MonoBehaviour
 
         sceneLinkButton.onClick.AddListener(() => //добавляем событие по срабатыванию новой кнопки
         {
-            StartCoroutine(LoadScene(sceneIndex, 2f));
+            StartCoroutine(LoadSceneCoroutine(sceneIndex, 0.3f));
         });
     }
-    
-    IEnumerator LoadScene(int sceneIndex, float delay)
+
+    IEnumerator LoadSceneCoroutine(int sceneIndex, float delay)
     {
-        fader.FadeBlack(delay);
-        yield return new WaitForSeconds(delay);
+        fader.FadeBlack(delay);        
+        yield return new WaitForSecondsRealtime(delay);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }
