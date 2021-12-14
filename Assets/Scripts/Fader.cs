@@ -21,7 +21,6 @@ public class Fader : MonoBehaviour
 
     public void FadeTransparent(float delay)
     {
-        Debug.Log("set color black");
         image.color = Color.black;        
         StartCoroutine(FadeToTransparentCoroutine(delay));
     }
