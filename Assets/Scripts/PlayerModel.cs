@@ -42,7 +42,6 @@ namespace Bounce.Movement
             {
                 playerRigidbody.AddForce(movement * movementForce);
             }
-            
         }
 
         public void Jump()
@@ -56,7 +55,6 @@ namespace Bounce.Movement
                     playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 }
             }
-            
         }
 
         public void Kill(string message)
@@ -66,7 +64,6 @@ namespace Bounce.Movement
                 dead = true;
                 Death?.Invoke(message);
             }
-            
         }
 
         private bool CheckIfGrounded()
