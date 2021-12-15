@@ -49,8 +49,7 @@ namespace Bounce.Movement
             if (!dead)
             {   
                 if (CheckIfGrounded())
-                //if ((playerRigidbody.velocity.y < 0.01f)
-                //&& (playerRigidbody.velocity.y > -0.01f))
+                
                 {                    
                     playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
                 }
@@ -68,10 +67,14 @@ namespace Bounce.Movement
 
         private bool CheckIfGrounded()
         {
-            Vector3 rayStart = transform.position;            
-            float radius = transform.localScale.y / 2 - 0.01f;
-            float rayLenghth = 0.02f;
-            return Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);            
+            if ((playerRigidbody.velocity.y < 0.01f) && (playerRigidbody.velocity.y > -0.01f))
+            {
+                Vector3 rayStart = transform.position;
+                float radius = transform.localScale.y / 2 - 0.01f;
+                float rayLenghth = 0.03f;
+                return Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);
+            }
+            else return false;
         }
     }
 }
