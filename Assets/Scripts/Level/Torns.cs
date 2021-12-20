@@ -27,7 +27,6 @@ public class Torns : MonoBehaviour, IExploding
     {
         if (isFolowingPlayer)
         {
-            Debug.Log("OnTrigger");
             if (other.CompareTag("Player"))
             {
                 playerFolowing = StartCoroutine(FolowPlayer(other.transform));

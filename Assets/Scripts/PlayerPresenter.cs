@@ -17,7 +17,7 @@ public class PlayerPresenter : MonoBehaviour, IExploding, IDamagable
 
     private Rigidbody playerRigidbody;
     private InputKeyboard inputKeyboard;
-    public PlayerModel playerModel;
+    [HideInInspector]public PlayerModel playerModel;
 
     private Vector3 move;
     private bool jump;

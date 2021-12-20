@@ -8,15 +8,16 @@ using System;
 
 public class GameMenuUI : MonoBehaviour
 {
-    [SerializeField] private PlayerPresenter playerPresenter;
+    [SerializeField] public PlayerPresenter playerPresenter;
     [SerializeField] private Canvas pauseMenuCanvas; //панель меню паузы
     [SerializeField] private Canvas playerMobileControllerInputCanvas; //панель управления игроком
     [SerializeField] private Canvas gameOverCanvas;
+    [SerializeField] public Canvas keyDoorCanvas;
     [SerializeField] private float deathCanvasDelay;
 
     private bool pauseMenuIsActive = false;
     private InputKeyboard inputKeyboard;
-    private bool playerDead;
+    [HideInInspector]public bool playerDead = false;
 
     private void Start()
     {
