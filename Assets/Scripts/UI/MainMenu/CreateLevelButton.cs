@@ -17,11 +17,23 @@ public class CreateLevelButton : MonoBehaviour
     void Start()
     {
         sceneCount = SceneManager.sceneCountInBuildSettings; //получаем количество сцен в проекте всего
-        Debug.Log($"sceneCount = {sceneCount}");
-        for (int i = 1; i < sceneCount; i++) //нулевую сцену игнорируем, поскольку это меню
+        Debug.Log($"sceneCount total = {sceneCount}");
+        
+        for (int i = 1; i <= LoadLastSceneNum(); i++) //нулевую сцену игнорируем, поскольку это меню
         {
             CreateNewButtonLinkToScene(i);      //запускаем метод создания кнопки, соответсвующей сцене
         }
+        Debug.Log($"scene last number opened = {LoadLastSceneNum()}");
+    }
+
+    private int LoadLastSceneNum()
+    {
+        int result = 1;
+        if (PlayerPrefs.HasKey("LastOpenedScene"))
+        {
+            result = PlayerPrefs.GetInt("SavedInteger");
+        }
+        return result;
     }
 
     /// <summary>
