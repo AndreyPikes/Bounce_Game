@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
-    [SerializeField] private Canvas canvasKeyDoor;
+    [SerializeField] private GameMenuUI gameMenuUI;
     [SerializeField] private GameObject removingWalls;
     [SerializeField] private GameObject effectExplosion;
+    [SerializeField] private bool isSelfDamaged;
 
     private EventHandler openButton;    
     private bool isInSensor = false;
-    private bool isSelfDamaged = false;
+    
 
     private InputKeyboard inputKeyboard;
 
@@ -20,11 +21,10 @@ public class ObstacleBehaviour : MonoBehaviour
     {
         inputKeyboard = new InputKeyboard();
 
-        if (canvasKeyDoor == null) isSelfDamaged = true;
-        else
+        if (!isSelfDamaged)
         {
-            openButton = canvasKeyDoor.GetComponentInChildren<EventHandler>();
-            Text message = canvasKeyDoor.GetComponentInChildren<Text>();
+            openButton = gameMenuUI.keyDoorCanvas.GetComponentInChildren<EventHandler>();
+            Text message = gameMenuUI.keyDoorCanvas.GetComponentInChildren<Text>();
 
 #if UNITY_ANDROID
         message.text =  "Press to open";
@@ -37,11 +37,11 @@ public class ObstacleBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !gameMenuUI.playerDead)
         {
             if (!isSelfDamaged)
             {
-                canvasKeyDoor.enabled = true;
+                gameMenuUI.keyDoorCanvas.enabled = true;
                 isInSensor = true;
             }
             else
@@ -57,7 +57,7 @@ public class ObstacleBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInSensor = false;
-            canvasKeyDoor.enabled = false;
+            gameMenuUI.keyDoorCanvas.enabled = false;
         }
     }
 
@@ -65,17 +65,16 @@ public class ObstacleBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (inputKeyboard.GetInputOpen() || (openButton != null && openButton.isDown)) DestroyObstacle();
-        
+        if (inputKeyboard.GetInputOpen() || (openButton != null && openButton.isDown))
+        {
+            if (!isSelfDamaged && isInSensor) DestroyObstacle();
+        }      
     }
 
     public void DestroyObstacle()
     {
-        if (!isSelfDamaged && isInSensor)
-        {
-            effectExplosion.SetActive(true);
-            canvasKeyDoor.enabled = false;
-            removingWalls.SetActive(false);
-        }
+        effectExplosion.SetActive(true);
+        gameMenuUI.keyDoorCanvas.enabled = false;
+        removingWalls.SetActive(false);
     }
 }
