@@ -31,7 +31,7 @@ public class CreateLevelButton : MonoBehaviour
         int result = 1;
         if (PlayerPrefs.HasKey("LastOpenedScene"))
         {
-            result = PlayerPrefs.GetInt("SavedInteger");
+            result = PlayerPrefs.GetInt("LastOpenedScene");            
         }
         return result;
     }

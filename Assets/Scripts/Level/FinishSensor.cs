@@ -26,8 +26,8 @@ public class FinishSensor : MonoBehaviour
         canvasWinGame.enabled = false;
         if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
         {
+            PlayerPrefs.SetInt("LastOpenedScene", SceneManager.GetActiveScene().buildIndex + 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetFloat("LastOpenedScene", SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {

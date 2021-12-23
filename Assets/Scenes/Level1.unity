@@ -183,9 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0fc6b6e4300504aa190b4aafd3d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasKeyDoor: {fileID: 1813767797}
+  gameMenuUI: {fileID: 894403071}
   removingWalls: {fileID: 1838730185}
   effectExplosion: {fileID: 838090349}
+  isSelfDamaged: 0
 --- !u!1 &14002680
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,9 +249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0fc6b6e4300504aa190b4aafd3d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasKeyDoor: {fileID: 0}
+  gameMenuUI: {fileID: 894403071}
   removingWalls: {fileID: 854205353}
   effectExplosion: {fileID: 1725159185}
+  isSelfDamaged: 1
 --- !u!1 &70463316
 GameObject:
   m_ObjectHideFlags: 0
@@ -39383,7 +39385,7 @@ PrefabInstance:
     - target: {fileID: 4107306781748980008, guid: 8055c7cfe44b45b49a171231d9dab3ff,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4107306781748980008, guid: 8055c7cfe44b45b49a171231d9dab3ff,
         type: 3}
@@ -40911,7 +40913,9 @@ MonoBehaviour:
   pauseMenuCanvas: {fileID: 562624282}
   playerMobileControllerInputCanvas: {fileID: 977746280}
   gameOverCanvas: {fileID: 1975593314}
+  keyDoorCanvas: {fileID: 1813767797}
   deathCanvasDelay: 1
+  playerDead: 0
 --- !u!4 &894403072
 Transform:
   m_ObjectHideFlags: 0
@@ -41371,9 +41375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0fc6b6e4300504aa190b4aafd3d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasKeyDoor: {fileID: 1813767797}
+  gameMenuUI: {fileID: 894403071}
   removingWalls: {fileID: 337646711}
   effectExplosion: {fileID: 203121220}
+  isSelfDamaged: 0
 --- !u!54 &1089982737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48341,9 +48346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0fc6b6e4300504aa190b4aafd3d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasKeyDoor: {fileID: 0}
+  gameMenuUI: {fileID: 894403071}
   removingWalls: {fileID: 1970324178}
   effectExplosion: {fileID: 2087306746}
+  isSelfDamaged: 1
 --- !u!1 &1838730185
 GameObject:
   m_ObjectHideFlags: 0
