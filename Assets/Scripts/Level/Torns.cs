@@ -42,10 +42,10 @@ public class Torns : MonoBehaviour, IExploding
     {
         while (true)
         {
-            Vector3 target = new Vector3(playerTransform.position.x,
-                                                transform.position.y,
-                                                transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, target, Time.fixedDeltaTime * followingSpeed);
+            Vector3 target = new Vector3(playerTransform.localPosition.x,
+                                                transform.localPosition.y,
+                                                transform.localPosition.z);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.fixedDeltaTime * followingSpeed);
 
             yield return new WaitForFixedUpdate();
         }

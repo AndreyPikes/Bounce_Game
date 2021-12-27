@@ -69,7 +69,7 @@ namespace Bounce.Movement
         {
             if ((playerRigidbody.velocity.y < 0.01f) && (playerRigidbody.velocity.y > -0.01f))
             {
-                Vector3 rayStart = transform.position;
+                Vector3 rayStart = transform.localPosition;
                 float radius = transform.localScale.y / 2 - 0.01f;
                 float rayLenghth = 0.03f;
                 return Physics.SphereCast(rayStart, radius, Vector3.down, out RaycastHit hitInfo, rayLenghth);
