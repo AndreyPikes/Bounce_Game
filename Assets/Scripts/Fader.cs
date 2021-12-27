@@ -6,16 +6,18 @@ using UnityEngine.UI;
 public class Fader : MonoBehaviour
 {
     [SerializeField] private float fadeToTransparentDelay;
-    private Image image;
+    [SerializeField] private Image image;
+    [SerializeField] private Canvas canvas;
     
     private void OnEnable()
     {
-        image = GetComponent<Image>();
+        canvas.enabled = true;
         FadeTransparent(fadeToTransparentDelay);        
     }
 
     public void FadeBlack(float delay)
     {
+        canvas.enabled = true;
         StartCoroutine(FadeToBlackCoroutine(delay));
     }
 
@@ -33,6 +35,7 @@ public class Fader : MonoBehaviour
             image.color = new Color(0, 0, 0, alpha);
             yield return new WaitForSecondsRealtime(delay / 20);
         }
+
     }
     IEnumerator FadeToTransparentCoroutine(float delay)
     {
@@ -42,6 +45,7 @@ public class Fader : MonoBehaviour
             image.color = new Color(0, 0, 0, alpha);
             yield return new WaitForSecondsRealtime(delay / 20);
         }
+        canvas.enabled = false;
     }
 
     private void OnDisable()
