@@ -35,11 +35,11 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 5
+  m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1943488302}
-  m_IndirectSpecularColor: {r: 0.123221986, g: 0.053454675, b: 0.11550925, a: 1}
+  m_IndirectSpecularColor: {r: 0.12239181, g: 0.05631444, b: 0.11622841, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -49,7 +49,7 @@ LightmapSettings:
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
-    m_IndirectOutputScale: 1
+    m_IndirectOutputScale: 1.5
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
@@ -61,7 +61,7 @@ LightmapSettings:
     m_AtlasSize: 1024
     m_AO: 1
     m_AOMaxDistance: 1
-    m_CompAOExponent: 5
+    m_CompAOExponent: 6
     m_CompAOExponentDirect: 0
     m_ExtractAmbientOcclusion: 0
     m_Padding: 4
@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73.75
+      value: -74
       objectReference: {fileID: 0}
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
@@ -6537,6 +6537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
+    - target: {fileID: 1110808409129086083, guid: ff61ec2752f1f394c970919eb496639d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff61ec2752f1f394c970919eb496639d, type: 3}
 --- !u!1001 &1331602583294206279
@@ -6817,6 +6822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Directional Light Realtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487910754538487363, guid: 820cd0dcb9fb7ed4cb7dfe0c5175c8b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820cd0dcb9fb7ed4cb7dfe0c5175c8b4, type: 3}
