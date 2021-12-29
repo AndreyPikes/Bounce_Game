@@ -21,7 +21,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1.2392157, g: 1.3411765, b: 1.4980392, a: 1}
+  m_AmbientSkyColor: {r: 1.2470589, g: 1.3411765, b: 1.4980392, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1943488302}
-  m_IndirectSpecularColor: {r: 0.12239181, g: 0.05631444, b: 0.11622841, a: 1}
+  m_IndirectSpecularColor: {r: 0.1235444, g: 0.056563936, b: 0.11613285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -57,12 +57,12 @@ LightmapSettings:
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
-    m_BakeResolution: 60
+    m_BakeResolution: 40
     m_AtlasSize: 2048
     m_AO: 1
     m_AOMaxDistance: 1
-    m_CompAOExponent: 6
-    m_CompAOExponentDirect: 6
+    m_CompAOExponent: 5
+    m_CompAOExponentDirect: 5
     m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000,
@@ -74,12 +74,12 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 1
-    m_BakeBackend: 1
+    m_BakeBackend: 2
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 64
-    m_PVRSampleCount: 512
+    m_PVRSampleCount: 256
     m_PVRBounces: 4
-    m_PVREnvironmentSampleCount: 512
+    m_PVREnvironmentSampleCount: 256
     m_PVREnvironmentReferencePointCount: 2048
     m_PVRFilteringMode: 1
     m_PVRDenoiserTypeDirect: 1
@@ -99,7 +99,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 6
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ad5450a84268d8b40b32af8a779bfe0f,
+    type: 2}
   m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
@@ -1169,7 +1170,7 @@ PrefabInstance:
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
@@ -1828,7 +1829,7 @@ PrefabInstance:
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6225567113585076867, guid: 273a3e1701e058947bd58bcc6fb2d002,
         type: 3}
@@ -9874,7 +9875,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
