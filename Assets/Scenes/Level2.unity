@@ -3391,6 +3391,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e63e45c781e724e9118cf7e96a2fa6, type: 3}
+--- !u!223 &1032816344 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3137068015177864979, guid: 25e63e45c781e724e9118cf7e96a2fa6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032816343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1032816345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3137068015791918613, guid: 25e63e45c781e724e9118cf7e96a2fa6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032816343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7942a825236c15047815fddcba1038ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1116363218 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3137068015977881448, guid: 25e63e45c781e724e9118cf7e96a2fa6,
@@ -9621,8 +9639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2327fac5ed746d4488d23a687185375e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fader: {fileID: 0}
-  canvasWinGame: {fileID: 0}
+  fader: {fileID: 1032816345}
+  canvasWinGame: {fileID: 1032816344}
 --- !u!65 &2046475657
 BoxCollider:
   m_ObjectHideFlags: 0
