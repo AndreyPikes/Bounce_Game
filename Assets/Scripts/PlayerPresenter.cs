@@ -33,7 +33,7 @@ public class PlayerPresenter : MonoBehaviour, IExploding, IDamagable
 
     void Update()
     { 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
         (jump, move) = playerInputUI.GetInput();
 #endif
 #if UNITY_STANDALONE_WIN || UNITY_WEBGL

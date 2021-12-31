@@ -26,7 +26,7 @@ public class GameMenuUI : MonoBehaviour
         playerPresenter.playerModel.Death += PlayerDeathCoroutine;        
 
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
         playerMobileControllerInputCanvas.enabled = true;        
 #endif
     }
