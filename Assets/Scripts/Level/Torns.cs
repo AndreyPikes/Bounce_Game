@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Torns : MonoBehaviour, IExploding
 {
-    private Coroutine playerFolowing;
+    private Coroutine playerFolowingCorotine;
     [SerializeField] bool isFolowingPlayer;
     [SerializeField] float followingSpeed;
+    private bool isFollowingNow = false;
 
     public void Explode()
     {
@@ -21,6 +22,15 @@ public class Torns : MonoBehaviour, IExploding
         {
             victim.Damage();
         }
+        if (collision.gameObject.CompareTag("Environment"))
+        {
+            if (playerFolowingCorotine != null)
+            {
+                StopCoroutine(playerFolowingCorotine);
+                playerFolowingCorotine = null;
+            }
+               
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,15 +39,12 @@ public class Torns : MonoBehaviour, IExploding
         {
             if (other.CompareTag("Player"))
             {
-                playerFolowing = StartCoroutine(FolowPlayer(other.transform));
-            }
-            else if (other.CompareTag("Environment"))
-            {
-                if (playerFolowing != null) StopCoroutine(playerFolowing);
+                if (playerFolowingCorotine == null) playerFolowingCorotine = StartCoroutine(FolowPlayer(other.transform));
             }
         }
     }
 
+    
     IEnumerator FolowPlayer(Transform playerTransform)
     {
         while (true)

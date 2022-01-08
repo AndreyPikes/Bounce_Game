@@ -1515,7 +1515,7 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 1
+  m_ShowToolkit: 0
   m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
@@ -9775,6 +9775,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7733377655660310233, guid: 8a7bc225bac0eb84bbf223475a9a4e02,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733377655660310233, guid: 8a7bc225bac0eb84bbf223475a9a4e02,
+        type: 3}
       propertyPath: m_Center.x
       value: 0.06655121
       objectReference: {fileID: 0}
@@ -9782,6 +9787,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 4.980087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733377655660310234, guid: 8a7bc225bac0eb84bbf223475a9a4e02,
+        type: 3}
+      propertyPath: followingSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7733377655660310237, guid: 8a7bc225bac0eb84bbf223475a9a4e02,
         type: 3}
@@ -9868,6 +9878,11 @@ PrefabInstance:
       propertyPath: playerInputUI
       value: 
       objectReference: {fileID: 1116363218}
+    - target: {fileID: 7736777180259449991, guid: 3e3524ac0b5f27b4791731b2cf551486,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_RootOrder
@@ -9876,12 +9891,12 @@ PrefabInstance:
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.92
+      value: -241.01
       objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.95
+      value: 23.09
       objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
