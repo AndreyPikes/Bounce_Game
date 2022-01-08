@@ -29,7 +29,18 @@ public class Torns : MonoBehaviour, IExploding
                 StopCoroutine(playerFolowingCorotine);
                 playerFolowingCorotine = null;
             }
-               
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Environment"))
+        {
+            if (playerFolowingCorotine != null)
+            {
+                StopCoroutine(playerFolowingCorotine);
+                playerFolowingCorotine = null;
+            }
         }
     }
 
@@ -39,12 +50,25 @@ public class Torns : MonoBehaviour, IExploding
         {
             if (other.CompareTag("Player"))
             {
-                if (playerFolowingCorotine == null) playerFolowingCorotine = StartCoroutine(FolowPlayer(other.transform));
+                if (playerFolowingCorotine == null) 
+                    playerFolowingCorotine = StartCoroutine(FolowPlayer(other.transform));
             }
         }
     }
 
-    
+    private void OnTriggerStay(Collider other)
+    {
+        if (isFolowingPlayer)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (playerFolowingCorotine == null)
+                    playerFolowingCorotine = StartCoroutine(FolowPlayer(other.transform));
+            }
+        }
+    }
+
+
     IEnumerator FolowPlayer(Transform playerTransform)
     {
         while (true)
@@ -56,6 +80,5 @@ public class Torns : MonoBehaviour, IExploding
 
             yield return new WaitForFixedUpdate();
         }
-        
     }
 }
