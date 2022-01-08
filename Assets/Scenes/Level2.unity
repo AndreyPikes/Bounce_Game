@@ -1163,7 +1163,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6225567113585076865, guid: 273a3e1701e058947bd58bcc6fb2d002, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 273a3e1701e058947bd58bcc6fb2d002, type: 3}
 --- !u!4 &313853870 stripped
 Transform:
@@ -9860,10 +9861,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1612812131, guid: 3e3524ac0b5f27b4791731b2cf551486, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1839361954, guid: 3e3524ac0b5f27b4791731b2cf551486, type: 3}
       propertyPath: CollisionModule.plane0
       value: 
@@ -9878,11 +9875,6 @@ PrefabInstance:
       propertyPath: playerInputUI
       value: 
       objectReference: {fileID: 1116363218}
-    - target: {fileID: 7736777180259449991, guid: 3e3524ac0b5f27b4791731b2cf551486,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_RootOrder
@@ -9891,12 +9883,12 @@ PrefabInstance:
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -241.01
+      value: -4.84
       objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.09
+      value: 9.96
       objectReference: {fileID: 0}
     - target: {fileID: 7736777180259449995, guid: 3e3524ac0b5f27b4791731b2cf551486,
         type: 3}
